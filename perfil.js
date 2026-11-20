@@ -22,6 +22,15 @@ window.PERFIL = {
   // Frase corta que aparece debajo del nombre
   frase: "Convierto procesos en resultados: lidero proyectos de mejora continua, automatización e inteligencia artificial que ahorran tiempo, ordenan la operación y se sostienen en el tiempo.",
 
+  // Datos que usa la tarjeta digital (miguelmbarrera.github.io/tarjeta)
+  tarjeta: {
+    cargo: "Coordinador de Proyectos Tecnológicos en Takami S.A. · Mejora Continua · Transformación Digital",
+    telefonoVisible: "310 888 1538",
+    ciudad: "Bogotá, Colombia",
+    fraseTitulo: "Convierto procesos en resultados:",
+    frase: "mejora continua, automatización e IA. +8 años en Takami S.A., industria de alimentos."
+  },
+
   contacto: {
     telefono: "+57 310 888 1538",
     whatsapp: "573108881538",            // solo números, con el 57 de Colombia
