@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Miguel Martínez · Tarjeta</title>
+<meta name="description" content="Tarjeta de presentación digital de Miguel Ángel Martínez Barrera.">
+<meta name="theme-color" content="#0B0F14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Miguel M.">
+<meta property="og:title" content="Miguel Martínez · Tarjeta de presentación">
+<meta property="og:image" content="../foto.jpg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icono.png">
+<link rel="icon" href="icono.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<style>
+:root{--red:#D7262E;--ink:#18212C}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:#0B0F14;min-height:100%}
+body{font-family:Manrope,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#fff;-webkit-font-smoothing:antialiased;
+  padding:calc(env(safe-area-inset-top) + 18px) 16px calc(env(safe-area-inset-bottom) + 22px);
+  display:flex;flex-direction:column;align-items:center;min-height:100vh;min-height:100dvh}
+.stage{width:100%;max-width:400px;display:flex;flex-direction:column;gap:14px;margin:auto 0}
+
+/* ---------- pase ---------- */
+.pass{background:linear-gradient(160deg,#222D3A 0%,#18212C 55%,#121921 100%);border-radius:20px;overflow:hidden;position:relative;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.pass::before{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(closest-side,rgba(215,38,46,.38),transparent);pointer-events:none}
+.pass > *{position:relative}
+.p-top{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 0}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15px}
+.mono{width:30px;height:30px;border-radius:8px;background:#fff;color:var(--ink);display:grid;place-items:center;font-size:11.5px;font-weight:800;position:relative}
+.mono::after{content:"";position:absolute;left:7px;right:7px;bottom:4px;height:2px;border-radius:2px;background:var(--red)}
+.hdr{text-align:right}
+.k{font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#9AA6B3}
+.v{font-size:14px;font-weight:700;margin-top:2px;line-height:1.35}
+.v a{color:inherit;text-decoration:none}
+.p-main{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 18px 6px}
+.name{font-size:clamp(22px,6.6vw,26px);font-weight:800;line-height:1.08;letter-spacing:-.02em}
+.name span{color:#FF5A60}
+.thumb{width:84px;height:84px;border-radius:16px;object-fit:cover;object-position:center 20%;flex:none;box-shadow:0 0 0 2px var(--red)}
+.p-field{padding:12px 18px 0}
+.p-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 18px 0}
+.pitch{margin:14px 18px 0;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.06);font-size:12.5px;line-height:1.45;color:#D7DDE4}
+.pitch b{color:#fff}
+.stripe{height:4px;background:var(--red);margin-top:16px}
+.qr-area{background:#fff;padding:18px 18px 16px;text-align:center}
+.qr{width:170px;height:170px;margin:0 auto}
+.qr svg{width:100%;height:100%;display:block}
+.qr-cap{margin-top:8px;font-size:12.5px;font-weight:700;color:var(--ink)}
+
+/* ---------- acciones ---------- */
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 12px;border-radius:14px;font:inherit;font-size:14.5px;font-weight:700;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);cursor:pointer}
+.btn:active{transform:scale(.98)}
+.btn svg{width:19px;height:19px;flex:none}
+.btn.wa{background:var(--red);border-color:var(--red);grid-column:1 / -1}
+.btn.full{grid-column:1 / -1}
+.hint{font-size:12.5px;color:#8D99A6;text-align:center;line-height:1.5;padding:0 8px}
+.hint b{color:#C9D1DA}
+body.app .hint{display:none}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);transform:translateX(-50%) translateY(140px);background:#fff;color:var(--ink);padding:12px 18px;border-radius:12px;font-weight:700;font-size:14px;transition:transform .25s ease;z-index:9}
+.toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<main class="stage">
+  <article class="pass" aria-label="Tarjeta de presentación">
+    <div class="p-top">
+      <div class="logo"><span class="mono">MM</span><span id="short"></span></div>
+      <div class="hdr"><div class="k">Certificación</div><div class="v">Black Belt</div></div>
+    </div>
+    <div class="p-main">
+      <div><div class="k">Tarjeta de presentación</div><div class="name" id="name"></div></div>
+      <img class="thumb" id="foto" alt="">
+    </div>
+    <div class="p-field"><div class="k">Perfil</div><div class="v" id="cargo"></div></div>
+    <div class="p-row">
+      <div><div class="k">Teléfono</div><div class="v"><a id="tel"></a></div></div>
+      <div><div class="k">Ciudad</div><div class="v" id="city"></div></div>
+    </div>
+    <div class="p-field"><div class="k">Correo</div><div class="v"><a id="mail"></a></div></div>
+    <div class="pitch" id="pitch"></div>
+    <div class="stripe"></div>
+    <div class="qr-area"><div class="qr" id="qr"></div><div class="qr-cap">Escanea y conoce mi perfil completo</div></div>
+  </article>
+
+  <div class="actions">
+    <a class="btn wa" id="wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></svg>Escríbeme por WhatsApp</a>
+    <button class="btn" id="vcf" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>Guardar</button>
+    <button class="btn" id="share" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Compartir</button>
+    <a class="btn full" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Ver mi perfil completo</a>
+  </div>
+  <p class="hint">En iPhone: toca <b>Compartir</b> en Safari y luego <b>Agregar a pantalla de inicio</b> para tener esta tarjeta como app.</p>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../perfil.js"></script>
+<script>
+(function(){
+  const P = window.PERFIL || {}, T = P.tarjeta || {}, C = P.contacto || {};
+  const $ = id => document.getElementById(id);
+  const PERFIL_URL = new URL('../', location.href).href;
+  const parts = (P.nombre||'').split(' '), half = Math.ceil(parts.length/2);
+  const first = parts.slice(0,half).join(' '), last = parts.slice(half).join(' ');
+  const tel = (C.telefono||'').replace(/[^\d+]/g,'');
+
+  if (navigator.standalone || matchMedia('(display-mode: standalone)').matches) document.body.classList.add('app');
+  $('short').textContent = P.nombreCorto || '';
+  $('name').innerHTML = '';
+  $('name').append(document.createTextNode(first), document.createElement('br'));
+  const s = document.createElement('span'); s.textContent = last; $('name').append(s);
+  $('foto').src = '../' + (P.foto || 'foto.jpg');
+  $('cargo').textContent = T.cargo || P.cargo || '';
+  $('tel').textContent = T.telefonoVisible || C.telefono || ''; $('tel').href = 'tel:' + tel;
+  $('city').textContent = T.ciudad || P.ubicacion || '';
+  $('mail').textContent = C.correo || ''; $('mail').href = 'mailto:' + (C.correo||'');
+  const b = document.createElement('b'); b.textContent = (T.fraseTitulo||'') + ' ';
+  $('pitch').append(b, document.createTextNode(T.frase || ''));
+  $('wa').href = 'https://wa.me/' + (C.whatsapp||'') + '?text=' + encodeURIComponent('Hola Miguel, vi tu tarjeta y me gustaría hablar contigo.');
+
+  try{ const q = qrcode(0,'M'); q.addData(PERFIL_URL); q.make(); $('qr').innerHTML = q.createSvgTag({cellSize:4,margin:0,scalable:true}); }catch(e){}
+
+  const toast = m => { const t=$('toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2400); };
+  $('vcf').addEventListener('click', () => {
+    const v = ['BEGIN:VCARD','VERSION:3.0',`N:${last};${first};;;`,`FN:${P.nombre}`,
+      P.empresa?`ORG:${P.empresa}`:'', `TITLE:${(P.experiencia&&P.experiencia[0]&&P.experiencia[0].cargo)||P.cargo||''}`,
+      tel?`TEL;TYPE=CELL:${tel}`:'', C.correo?`EMAIL;TYPE=INTERNET:${C.correo}`:'', `URL:${PERFIL_URL}`,
+      C.linkedin?`X-SOCIALPROFILE;TYPE=linkedin:${C.linkedin}`:'', 'END:VCARD'].filter(Boolean).join('\r\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([v],{type:'text/vcard'}));
+    a.download = 'Miguel-Martinez.vcf'; document.body.appendChild(a); a.click(); a.remove();
+    toast('Contacto listo para guardar');
+  });
+  $('share').addEventListener('click', async () => {
+    const data = {title:'Miguel Martínez · Tarjeta de presentación', text:'Mi tarjeta de presentación digital', url:location.href.split('#')[0]};
+    if (navigator.share) { try{ await navigator.share(data); }catch(e){} }
+    else { try{ await navigator.clipboard.writeText(data.url); toast('Enlace copiado'); }catch(e){ prompt('Copia este enlace:', data.url); } }
+  });
+})();
+</script>
+</body>
+</html>

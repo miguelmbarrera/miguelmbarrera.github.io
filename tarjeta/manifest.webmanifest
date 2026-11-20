@@ -1,0 +1,14 @@
+{
+  "name": "Miguel Martínez · Tarjeta",
+  "short_name": "Miguel M.",
+  "description": "Tarjeta de presentación digital de Miguel Ángel Martínez Barrera",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0B0F14",
+  "theme_color": "#0B0F14",
+  "lang": "es",
+  "icons": [
+    { "src": "icono.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
