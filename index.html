@@ -97,14 +97,20 @@ img{display:block;max-width:100%}
 
 /* ---------- reach strip ---------- */
 .reach{position:relative;z-index:2;margin-top:-52px}
-.reach-card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr}
+.reach-card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden}
+.reach-title{display:flex;align-items:center;gap:8px;padding:12px 18px;border-bottom:1px solid var(--line);font-size:12.5px;font-weight:800;color:var(--muted);letter-spacing:.02em}
+.reach-title svg{width:16px;height:16px;flex:none;color:var(--red)}
+.reach-grid{display:grid;grid-template-columns:1fr 1fr}
+.co{display:inline-flex;align-items:center;gap:6px;color:#fff;font-size:14px;font-weight:700}
+.co svg{width:16px;height:16px;color:var(--hero-muted)}
 .reach-item{padding:18px 18px}
 .reach-item:nth-child(odd){border-right:1px solid var(--line)}
 .reach-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
 .reach-item b{display:block;font-size:clamp(18px,5vw,22px);white-space:nowrap;font-weight:800;letter-spacing:-.02em}
 .reach-item span{display:block;font-size:13px;color:var(--muted);font-weight:600;line-height:1.35;margin-top:2px}
 @media (min-width:860px){
-  .reach-card{grid-template-columns:repeat(4,1fr)}
+  .reach-grid{grid-template-columns:repeat(4,1fr)}
+  .reach-title{padding:12px 24px}
   .reach-item{padding:22px 24px}
   .reach-item:nth-child(-n+2){border-bottom:0}
   .reach-item{border-right:1px solid var(--line)}
@@ -228,6 +234,7 @@ footer button{background:none;border:0;color:inherit;font:inherit;text-decoratio
     in:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5z"/></svg>',
     doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>',
     pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+    brief:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>',
     grad:'<svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>',
     cert:'<svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 8 22l4-2 4 2-1-7.5"/></svg>'
   };
@@ -264,13 +271,14 @@ footer button{background:none;border:0;color:inherit;font:inherit;text-decoratio
       ${P.disponible ? `<div class="badge"><i></i>${esc(P.textoDisponible)}</div>`:''}
       <h1>${esc(first)} <span>${esc(last)}</span></h1>
       <div class="role">${esc(P.cargo)}</div>
-      <div class="meta-row"><span class="seal"><b></b>${esc(P.sello)}</span><span class="loc">${I.pin}${esc(P.ubicacion)}</span></div>
+      <div class="meta-row">${P.empresa?`<span class="co">${I.brief}${esc(P.empresa)}</span>`:''}<span class="seal"><b></b>${esc(P.sello)}</span><span class="loc">${I.pin}${esc(P.ubicacion)}</span></div>
       <p class="pitch">${esc(P.frase)}</p>
       <div class="ctas">${ctaHTML()}</div>
       ${iconRow}
     </div>`;
 
-  $('reach').innerHTML = (P.alcance||[]).map(a=>`<div class="reach-item"><b>${esc(a.cifra)}</b><span>${esc(a.texto)}</span></div>`).join('');
+  $('reach').innerHTML = (P.alcanceTitulo ? `<div class="reach-title">${I.brief}${esc(P.alcanceTitulo)}</div>` : '') +
+    `<div class="reach-grid">${(P.alcance||[]).map(a=>`<div class="reach-item"><b>${esc(a.cifra)}</b><span>${esc(a.texto)}</span></div>`).join('')}</div>`;
   $('about').innerHTML = (P.sobreMi||[]).map(p=>`<p>${esc(p)}</p>`).join('');
   $('impact').innerHTML = (P.impacto||[]).map(c=>`
     <article class="card"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${IMP[c.icono]||IMP.mejora}</svg></div>

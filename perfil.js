@@ -11,6 +11,7 @@ window.PERFIL = {
   nombreCorto: "Miguel Martínez",
   cargo: "Coordinador de Proyectos · Mejora Continua · Transformación Digital",
   sello: "Lean Six Sigma Black Belt",
+  empresa: "Takami S.A.",                 // empresa actual (aparece junto a tu nombre)
   ubicacion: "Bogotá D.C., Colombia",
   foto: "foto.jpg",
 
@@ -29,26 +30,27 @@ window.PERFIL = {
     hojaDeVida: ""                        // nombre de un PDF para mostrar el botón de descarga; "" lo oculta
   },
 
+  alcanceTitulo: "Alcance de mi trabajo en Takami S.A. · grupo de restaurantes",
   alcance: [
-    { cifra: "+8 años", texto: "en la industria de alimentos" },
-    { cifra: "45 sedes", texto: "más planta de producción y CEDI" },
-    { cifra: "6 compañías", texto: "del grupo con soluciones en ampliación" },
-    { cifra: "1.500", texto: "colaboradores en procesos de adopción" }
+    { cifra: "+8 años", texto: "en Takami, industria de alimentos" },
+    { cifra: "45 sedes", texto: "de Takami, más planta de producción y CEDI" },
+    { cifra: "6 compañías", texto: "del grupo Takami con soluciones en ampliación" },
+    { cifra: "1.500", texto: "colaboradores de Takami en procesos de adopción" }
   ],
 
   sobreMi: [
     "Soy Administrador de Empresas, Magíster en Negocios Internacionales y Lean Six Sigma Black Belt del Tecnológico de Monterrey.",
-    "Llevo más de 8 años liderando proyectos de transformación en la industria de alimentos: desde el diagnóstico y la priorización hasta la implementación, la gestión del cambio y la sostenibilidad de los resultados. Me apasiona unir la tecnología con la operación para que los equipos trabajen mejor y decidan con datos."
+    "Desde 2018 trabajo en Takami S.A., grupo de restaurantes con 45 sedes, planta de producción y centro de distribución. Allí lidero proyectos de transformación: desde el diagnóstico y la priorización hasta la implementación, la gestión del cambio y la sostenibilidad de los resultados. Me apasiona unir la tecnología con la operación para que los equipos trabajen mejor y decidan con datos."
   ],
 
   // Tipos de icono disponibles: mejora, automatizacion, digital, cambio, ia, erp
   impacto: [
-    { icono: "mejora", titulo: "Mejora continua", detalle: "Rediseño y estandarización del cierre de inventarios en todas las sedes con DMAIC.", resultado: "-50 % en tiempo de procesamiento" },
+    { icono: "mejora", titulo: "Mejora continua", detalle: "Rediseño y estandarización del cierre de inventarios en todas las sedes de Takami con DMAIC.", resultado: "-50 % en tiempo de procesamiento" },
     { icono: "automatizacion", titulo: "Automatización de procesos", detalle: "Flujos automáticos con N8N e IA en procesos administrativos, de compras y de logística.", resultado: "Hasta -50 % de horas operativas" },
-    { icono: "digital", titulo: "Transformación digital", detalle: "Soluciones digitales propias integradas al ERP para el cierre diario y el seguimiento del portafolio.", resultado: "Ampliación a 6 compañías del grupo" },
-    { icono: "cambio", titulo: "Gestión del cambio", detalle: "Adopción de plataformas corporativas como BUK y el ERP, con manuales, capacitación y acompañamiento.", resultado: "1.500 colaboradores" },
+    { icono: "digital", titulo: "Transformación digital", detalle: "Soluciones digitales propias integradas al ERP para el cierre diario y el seguimiento del portafolio.", resultado: "Ampliación a 6 compañías del grupo Takami" },
+    { icono: "cambio", titulo: "Gestión del cambio", detalle: "Adopción de plataformas corporativas como BUK y el ERP, con manuales, capacitación y acompañamiento.", resultado: "1.500 colaboradores de Takami" },
     { icono: "ia", titulo: "Adopción de IA", detalle: "Inteligencia artificial para automatizar tareas, analizar datos y construir tableros.", resultado: "Decisiones más rápidas con datos" },
-    { icono: "erp", titulo: "ERP e integración", detalle: "Implementación de módulos y facturación electrónica, e integración de sistemas entre áreas.", resultado: "Facturación electrónica en 45 sedes" }
+    { icono: "erp", titulo: "ERP e integración", detalle: "Implementación de módulos y facturación electrónica, e integración de sistemas entre áreas.", resultado: "Facturación electrónica en las 45 sedes de Takami" }
   ],
 
   experiencia: [
